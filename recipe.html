@@ -1,0 +1,76 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Carbonara Recipe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Carbonara Pasta</h1>
+
+      <!-- Image of pasta -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/3/33/Espaguetis_carbonara.jpg"
+        alt="Carbonara Pasta" />
+
+      <div class="people-buttons">
+        <button class="people-btn" onclick="setServings(2)">2 People</button>
+        <button class="people-btn" onclick="setServings(4)">4 People</button>
+        <button class="people-btn" onclick="setServings(6)">6 People</button>
+        <button class="people-btn" onclick="setServings(8)">8 People</button>
+      </div>
+
+      <h2>Ingredients (<span id="servings">4</span> people)</h2>
+      <ul>
+        <li><span id="spaghetti">450</span> g spaghetti</li>
+        <li><span id="pancetta">170</span> g pancetta or bacon</li>
+        <li><span id="eggs">4</span> eggs</li>
+        <li><span id="cheese">1</span> cup grated Parmesan or Pecorino</li>
+        <li>Black pepper (to taste)</li>
+      </ul>
+
+      <h2>Instructions</h2>
+      <ol>
+        <li>Cook spaghetti in salted water until al dente.</li>
+        <li>Fry pancetta/bacon until crisp. Turn off heat.</li>
+        <li>Whisk eggs, cheese, and black pepper in a bowl.</li>
+        <li>Drain pasta (save a little pasta water).</li>
+        <li>
+          Toss hot pasta with pancetta, remove from heat, then mix in egg sauce.
+        </li>
+        <li>Add a splash of pasta water if needed. Serve immediately.</li>
+      </ol>
+    </div>
+
+    <script>
+      const baseServings = 4;
+
+      const baseIngredients = {
+        spaghetti: 450,
+        pancetta: 170,
+        eggs: 4,
+        cheese: 1,
+      };
+
+      function setServings(newServings) {
+        const factor = newServings / baseServings;
+
+        document.getElementById("servings").textContent = newServings;
+        document.getElementById("spaghetti").textContent = Math.round(
+          baseIngredients.spaghetti * factor
+        );
+        document.getElementById("pancetta").textContent = Math.round(
+          baseIngredients.pancetta * factor
+        );
+        document.getElementById("eggs").textContent =
+          baseIngredients.eggs * factor;
+        document.getElementById("cheese").textContent = (
+          baseIngredients.cheese * factor
+        ).toFixed(2);
+      }
+    </script>
+  </body>
+</html>
